@@ -56,6 +56,7 @@ void saveToFile(Image *image) {
 	int fileSize = 14 + 40 + rowWidth * image->pixelHeight;
 	int dataOffset = 14 + 40;
 	int colorsUsed = (1 << 24);
+	int infoHeaderSize = 40;
 
 	// Signature
 	fprintf(file, "BM");
@@ -69,16 +70,16 @@ void saveToFile(Image *image) {
 	fprintf(file, "%c%c%c%c", (char)(0), (char)(0), (char)(0), (char)(0));
  
  	// Offset
-	fprintf(file, "%c%c%c%c", (char)((54 >> 0 ) & 0xFF),
-							  (char)((54 >> 8 ) & 0xFF),
-							  (char)((54 >> 16) & 0xFF),
-							  (char)((54 >> 24) & 0xFF));
+	fprintf(file, "%c%c%c%c", (char)((dataOffset >> 0 ) & 0xFF),
+							  (char)((dataOffset >> 8 ) & 0xFF),
+							  (char)((dataOffset >> 16) & 0xFF),
+							  (char)((dataOffset >> 24) & 0xFF));
 
 	// Size of info header.
-	fprintf(file, "%c%c%c%c", (char)((40 >> 0 ) & 0xFF),
-							  (char)((40 >> 8 ) & 0xFF),
-							  (char)((40 >> 16) & 0xFF),
-							  (char)((40 >> 24) & 0xFF));
+	fprintf(file, "%c%c%c%c", (char)((infoHeaderSize >> 0 ) & 0xFF),
+							  (char)((infoHeaderSize >> 8 ) & 0xFF),
+							  (char)((infoHeaderSize >> 16) & 0xFF),
+							  (char)((infoHeaderSize >> 24) & 0xFF));
 
 	// Width and Height
 	fprintf(file, "%c%c%c%c", (char)((image->pixelWidth >> 0 ) & 0xFF),
