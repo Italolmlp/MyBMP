@@ -10,5 +10,3 @@ This program uses MyBMP to color the complex plane according to a color wheel. A
 ## Mandelbrot
 This program uses MyBMP to draw the famous mandelbrot set several times and then uses ffmpeg to create a video zooming into the mandelbrot set. The following image shows the mandelbrot set.
 ![Mandelbrot set](examples/mandelbrot/mandelbrot.bmp)
-
-Teste
